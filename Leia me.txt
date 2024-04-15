@@ -1,0 +1,16 @@
+
+Para rodar o projeto é necessário rodas essas queries e ir em src/dao/ConnectionFactory e mudar a url de conexao com o db
+
+Create table contacorrente(cpf char(11) primary key not null, nome char(50) not null, senha char(50) not null, 
+estado char(50) not null, cidade char(50) not null, rua char(50) not null, complemento char(50), numero int not null, cep char(10) not null,
+saldo double not null, taxa float not null, ranking char(10) not null, tipo char(10) not null, tem_cartao boolean not null, limite_credito double not null
+);
+
+
+Create table ContaPoupanca(cpf char(11) primary key not null, nome char(50) not null, senha char(50) not null, 
+estado char(50) not null, cidade char(50) not null, rua char(50) not null, complemento char(50), numero int not null, cep char(10) not null,
+saldo double not null, rendimento float not null, ranking char(10) not null, tipo char(10) not null);
+
+
+Create table Cartao(id int primary key not null auto_increment,creditoLimite double not null, debito double not null, limiteTransacao int not null, transacoesHoje int not null, seguro bool not null
+,cliente_cpf char(11), foreign key(cliente_cpf) references contacorrente(cpf));
